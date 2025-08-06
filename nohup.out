@@ -37,3 +37,37 @@
 [info] Server version string is klange/0.5.
 [extn] CGI support is enabled.
 [extn] Default indexes are enabled.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
+[warn] Failed to execute CGI script: /home/f/friaa/www-dev/www/cgi-bin/test00.c?(null).
+[warn] Read nothing [0 on 0x7f4c40004240 12 2880014]
+[warn] Specifically: Success
+[warn] Sadness: Pipe closed during headers.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
+[info] Listening on port 5254.
+[info] Serving out of '.'.
+[info] Server version string is klange/0.5.
+[extn] CGI support is enabled.
+[extn] Default indexes are enabled.
