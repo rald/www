@@ -1,4 +1,4 @@
-#!php-cgi
+<!-- file: connect.php -->
 
 <?php
 

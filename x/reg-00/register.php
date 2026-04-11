@@ -1,3 +1,5 @@
+<!-- file: register.php -->
+
 <!doctype html>
 <html>
 <head>
