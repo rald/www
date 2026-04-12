@@ -859,3 +859,54 @@ BrokenPipeError: [Errno 32] Broken pipe
 160.25.231.57 - - [10/Apr/2026 23:30:24] "GET /schedule.html HTTP/1.1" 200 -
 160.25.231.57 - - [10/Apr/2026 23:30:38] "GET /subjects.html HTTP/1.1" 200 -
 2026-04-11 02:06:15: (server.c.1971) server started (lighttpd/1.4.82)
+PHP Parse error:  syntax error, unexpected token "try" in /home/fria/projects/www/x/reg/connect.php on line 5
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/adding.php:178
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/adding.php on line 178
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/adding.php:178
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/adding.php on line 178
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/adding.php:178
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/adding.php on line 178
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/dropping.php:38
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/dropping.php on line 38
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/dropping.php:38
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/dropping.php on line 38
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/dropping.php:38
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/dropping.php on line 38
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/dropping.php:38
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/dropping.php on line 38
+PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_query() in /home/fria/projects/www/x/reg/dropping.php:38
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/dropping.php on line 38
+PHP Warning:  require_once(errors.php): Failed to open stream: No such file or directory in /home/fria/projects/www/x/reg/adding.php on line 3
+PHP Fatal error:  Uncaught Error: Failed opening required 'errors.php' (include_path='.:') in /home/fria/projects/www/x/reg/adding.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/fria/projects/www/x/reg/adding.php on line 3
+2026-04-11 17:12:38: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 17:12:38: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 17:21:36: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 17:21:36: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+PHP Warning:  SQLite3::query(): Unable to prepare statement: no such table: schedule in /home/fria/projects/www/x/reg/dropping.php on line 46
+PHP Warning:  SQLite3::query(): Unable to prepare statement: no such table: schedule in /home/fria/projects/www/x/reg/dropping.php on line 46
+PHP Warning:  SQLite3::query(): Unable to prepare statement: no such table: schedule in /home/fria/projects/www/x/reg/dropping.php on line 46
+2026-04-11 18:11:50: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 18:11:50: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 18:17:15: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 18:17:15: (h1.c.441) unexpected TLS ClientHello on clear port (112.206.69.241)
+2026-04-11 18:28:10: (server.c.2372) server stopped by UID = 1002 PID = 1291206
+2026-04-11 18:28:18: (server.c.1971) server started (lighttpd/1.4.82)

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<table border="1" id="scheduleTable" width="1600">
+<table border="1" id="scheduleTable">
   <!-- Table will be generated here -->
 </table>
 
@@ -41,6 +41,46 @@ const schedule = [
 
 ];
 
+
+<?php
+
+$db = new SQLite3('pantasya.db');
+$results = $db->query('SELECT * FROM schedule');
+
+$data = [];
+while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+    $data[] = $row;
+}
+
+?>
+
+let data=<?php echo json_encode($data, JSON_PRETTY_PRINT);?>;
+
+for(let val of Object.values(data)) {
+
+    let dow="";
+    switch(val.dayOfWeek) {
+        case 'D': dow='Sunday'; break;
+        case 'M': dow='Monday'; break;
+        case 'T': dow='Tuesday'; break;
+        case 'W': dow='Wednesday'; break;
+        case 'H': dow='Thursday'; break;
+        case 'F': dow='Friday'; break;
+        case 'S': dow='Saturday'; break;
+    }
+
+    schedule.push({
+        pal: Math.floor(Math.random()*16),
+        sid: val.student_id,
+        subject: val.subject_id,
+        dayofweek: dow,
+        startTime: val.beginTime,
+        endTime: val.endTime
+    });
+}
+
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 const palette = [
 "#1a1c2c",
 "#5d275d",
@@ -60,8 +100,6 @@ const palette = [
 "#333c57",
 "#000080",
 ];
-
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 function blackOrWhite(bgColor) {
   let color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;

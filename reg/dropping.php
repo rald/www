@@ -1,5 +1,3 @@
-<!-- file: dropping.php -->
-
 <!doctype html>
 <html>
 <head>
@@ -11,9 +9,9 @@
 </head>
 <body>
 
-<a href="register.php">register</a>
-<a href="adding.php">adding</a>
-<a href="dropping.php">dropping</a>
+<?php
+    include("links.php");
+?>
 
 <hr>
 

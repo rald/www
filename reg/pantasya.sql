@@ -19,7 +19,7 @@ create table subject (
 
 
 create table schedule (
-	id integer not null primary key autoincrement,
+	id integer not null primary key,
 	student_id varchar(5) not null,
 	subject_id varchar(5) not null,
 	dayOfWeek varchar(1) not null,
@@ -77,7 +77,7 @@ insert into subject(id,description) values
 
 
 insert into schedule(student_id,subject_id,dayOfWeek,beginTime,endTime) values
-('I2209','CPP-0','F','13:00','14:30'),
-('I2209','JAV-0','F','14:30','16:00');
+('E2500','CPP','F','13:00','14:30'),
+('E2500','JAV','F','14:30','16:00');
 
 

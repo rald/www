@@ -1,5 +1,3 @@
-<!-- file: adding.php -->
-
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,9 +10,9 @@
 	</head>
 	<body>
 
-<a href="register.php">register</a>
-<a href="adding.php">adding</a>
-<a href="dropping.php">dropping</a>
+<?php
+    include("links.php");
+?>
 
 <hr>
 
@@ -197,7 +195,7 @@ if ($stmt) {
 echo "</tr>";
 
 echo "<tr>";
-$dows = array("M", "T", "W", "H", "F", "S", "D");
+$dows = array("D", "M", "T", "W", "H", "F", "S");
 echo "<td>Select&nbsp;Day</td>";
 echo "<td><select name='dow' required>";
 echo "<option value=''></option>";
@@ -220,216 +218,3 @@ echo "</form>";
 
 	</body>
 </html>
-<!-- file: connect.php -->
-
-<?php
-
-$dbname = "pantasya.db";
-
-/*
-$dbhost = "sql112.epizy.com";
-$dbuser = "epiz_28817728";
-$dbpass = "gdTA6izrfFVzyA";
-$dbname = "epiz_28817728_pantasya";
-*/
-
-/*
-$dbhost = "localhost";
-$dbuser = "fria";
-$dbpass = "alohomora";
-$dbname = "pantasya";
-*/
-
-
-
-$db = new SQLite3($dbname);
-
-
-
-?>
-<!-- file: dropping.php -->
-
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POCS: Register Student</title>
-    <style>
-        * { font-family: monospace; }
-    </style>
-</head>
-<body>
-
-<a href="register.php">register</a>
-<a href="adding.php">adding</a>
-<a href="dropping.php">dropping</a>
-
-<hr>
-
-<?php
-require_once("errors.php");
-require_once("connect.php");
-
-if (isset($_POST['id'])) {
-    $id = (int)$_POST['id'];
-
-    $stmt = $db->prepare("DELETE FROM schedule WHERE id = :id");
-    $stmt->bindValue(":id", $id, SQLITE3_INTEGER);
-
-    if ($stmt->execute()) {
-        echo "Record deleted";
-    } else {
-        echo "Error deleting record";
-    }
-
-    $stmt->close();
-}
-
-echo "<form method='post' action='" . htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES) . "'>";
-
-$sql = "
-    SELECT schedule.id AS id, student_id, nick, subject_id, description, dayOfWeek, beginTime, endTime
-    FROM schedule
-    JOIN student ON student_id = student.id
-    JOIN subject ON subject_id = subject.id
-";
-
-$res = $db->query($sql);
-
-if ($res && $res->numColumns() > 0) {
-    echo "<table border='1'>";
-    echo "<tr>
-            <th>ID</th>
-            <th>Student&nbsp;ID</th>
-            <th>Nick</th>
-            <th>Subject&nbsp;ID</th>
-            <th>Description</th>
-            <th>Day</th>
-            <th>Begin&nbsp;Time</th>
-            <th>End&nbsp;Time</th>
-            <th>Action</th>
-          </tr>";
-
-    while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-        $beginTime = date('g:i A', strtotime($row['beginTime']));
-        $endTime = date('g:i A', strtotime($row['endTime']));
-
-        echo "<tr>
-                <td>" . htmlspecialchars($row['id']) . "</td>
-                <td>" . htmlspecialchars($row['student_id']) . "</td>
-                <td>" . htmlspecialchars($row['nick']) . "</td>
-                <td>" . htmlspecialchars($row['subject_id']) . "</td>
-                <td>" . htmlspecialchars($row['description']) . "</td>
-                <td>" . htmlspecialchars($row['dayOfWeek']) . "</td>
-                <td>" . htmlspecialchars($beginTime) . "</td>
-                <td>" . htmlspecialchars($endTime) . "</td>
-                <td>
-                    <button type='submit' name='id' value='" . htmlspecialchars($row['id']) . "' onclick='return confirm(\"Are you sure?\")'>Delete</button>
-                </td>
-              </tr>";
-    }
-
-    echo "</table>";
-} else {
-    echo "No records";
-}
-
-echo "</form>";
-
-$db->close();
-?>
-
-	</body>
-</html>
-
-<!-- file: errors.php -->
-
-<?php
-
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-?>
-<!-- file: register.php -->
-
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POCS: Register Student</title>
-    <style>
-        * { font-family: monospace; }
-    </style>
-</head>
-<body>
-
-<a href="register.php">register</a>
-<a href="adding.php">adding</a>
-<a href="dropping.php">dropping</a>
-
-<hr>
-
-<?php
-require_once "errors.php";
-require_once "connect.php";
-
-$stu = '';
-$nck = '';
-$msg = '';
-
-if (
-    $_SERVER['REQUEST_METHOD'] === 'POST' &&
-    isset($_POST['submit']) &&
-    $_POST['submit'] === 'Add'
-) {
-    $stu = trim($_POST['stu'] ?? '');
-    $nck = trim($_POST['nck'] ?? '');
-
-    if ($stu !== '' && $nck !== '') {
-        $stmt = $db->prepare("SELECT id FROM student WHERE id = :id");
-        $stmt->bindValue(':id', $stu, SQLITE3_TEXT);
-        $res = $stmt->execute();
-
-        if ($res && $res->fetchArray(SQLITE3_NUM) === false) {
-            $stmt = $db->prepare("INSERT INTO student (id, nick) VALUES (:id, :nick)");
-            $stmt->bindValue(':id', $stu, SQLITE3_TEXT);
-            $stmt->bindValue(':nick', $nck, SQLITE3_TEXT);
-
-            if ($stmt->execute()) {
-                $msg = "Record added";
-            } else {
-                $msg = "Error adding record";
-            }
-        } else {
-            $msg = "Student ID already exists";
-        }
-    } else {
-        $msg = "Please fill in all fields";
-    }
-}
-?>
-
-<?php if ($msg !== '') echo htmlspecialchars($msg); ?>
-
-<form method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
-    <table>
-        <tr>
-            <td>Student ID</td>
-            <td><input name="stu" type="text" value="<?= htmlspecialchars($stu) ?>" pattern="^[A-L]\d{4}$" size="5" maxlength="5"></td>
-        </tr>
-        <tr>
-            <td>Student Nickname</td>
-            <td><input name="nck" type="text" value="<?= htmlspecialchars($nck) ?>" size="20" maxlength="20"></td>
-        </tr>
-        <tr>
-            <td align="right" colspan="2"><input name="submit" type="submit" value="Add"></td>
-        </tr>
-    </table>
-</form>
-
-</body>
-</html>
-<?php
-$db->close();
-?>
