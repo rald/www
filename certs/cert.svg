@@ -53,12 +53,10 @@
 
   <svg viewBox="0 0 1056 816">
 
-
-
     <g transform="translate(0,0)" font-size="32px" font-family="sans">
       
       <rect x="0" y="0" width="1056" height="816" fill="white" />
-
+      
 
 
 <g transform="scale(5) translate(5,-20)">
@@ -88,17 +86,18 @@
 
 
 
-
-      
       <rect x="20" y="20" width="996" height="756" fill="none" stroke="black"/>
       
       <rect x="40" y="40" width="996" height="756" fill="none" stroke="black"/>
+
+
+
 
       <g transform="translate(0,32)">
         
     		<text x="528" y="64" fill="black" style="text-anchor: middle;">This is to certify that</text>
  
-     		<text x="528" y="160" fill="black" style="text-anchor: middle;" font-family="Certificate Regular" font-size="80px">Ferdinand Escalicas</text>
+     		<text x="528" y="160" fill="black" style="text-anchor: middle;" font-family="Certificate Regular" font-size="80px">Fria El Agua</text>
     		
     		<text x="528" y="240" fill="black" style="text-anchor: middle;">has completed the course</text>
 
@@ -106,7 +105,7 @@
 
     		<text x="528" y="412" fill="black" style="text-anchor: middle;">on</text>
 
-    		<text x="528" y="496" fill="black" style="text-anchor: middle;" font-family="Certificate Regular" font-size="80px">September 1, 2024</text>
+    		<text x="528" y="496" fill="black" style="text-anchor: middle;" font-family="Certificate Regular" font-size="80px">April 1, 2026</text>
 
 			</g>
 			
